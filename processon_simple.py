@@ -22,7 +22,7 @@ month = str(datetime.datetime.now().month)
 day = str(datetime.datetime.now().day)
 def getuser(i):
     id = str(i)
-    user = ''+year+month+day+id+'-'.join(random.sample(string.ascii_letters + string.digits, 4))
+    user = ''+year+month+day+id+''.join(random.sample(string.ascii_letters + string.digits, 4))
 
     return user
 
