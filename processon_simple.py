@@ -23,7 +23,7 @@ def getuser(i):
     year = str(datetime.datetime.now().year)
     month = str(datetime.datetime.now().month)
     day = str(datetime.datetime.now().day)
-    user = ''+year+month+day+i
+    user = ''+year+month+day+id
 
     return user
 
