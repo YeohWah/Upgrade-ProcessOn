@@ -54,6 +54,7 @@ if __name__ == "__main__":
     while num < max_num:
         user = getuser(init_num)
         domain = getdomain()
+        time.sleep(5)
         po(user, domain, url)
         init_num += 1
         num += 1
