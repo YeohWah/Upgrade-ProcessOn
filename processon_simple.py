@@ -46,9 +46,9 @@ def po(user, domain, url):
     }
     rsp_po = ss_po.post('https://www.processon.com/signup/submit', data=processon)
 
-    fmt = "\nemail: {}\npassword: {}\nnickname: {}\n"
-    print(fmt.format(processon.get('email'), password, fullname))
-    logging.info(fmt.format(processon.get('email')+'\n password:'+password))
+    fmt = "\nemail: {}\npassword: {}"
+    print(fmt.format(processon.get('email'), password))
+    logging.info(fmt.format(processon.get('email'),password))
 if __name__ == "__main__":
 
     while num < max_num:
