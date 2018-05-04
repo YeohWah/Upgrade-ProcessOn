@@ -19,9 +19,10 @@ init_num = 1
 
 
 def getuser(i):
-    year = datetime.datetime.now().year
-    month = datetime.datetime.now().month
-    day = datetime.datetime.now().day
+    id = str(i)
+    year = str(datetime.datetime.now().year)
+    month = str(datetime.datetime.now().month)
+    day = str(datetime.datetime.now().day)
     user = ''+year+month+day+i
 
     return user
