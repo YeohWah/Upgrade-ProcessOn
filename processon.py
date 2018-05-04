@@ -1,21 +1,23 @@
 import random
+import string
 import re
 import time
 import requests
 import argparse
+#打印日志
+import logging
+#设置日志等级
+logging.basicConfig(filename='example.log', filemode="w", level=logging.DEBUG)
 
-import proxy
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("url")
-args = parser.parse_args()
-url = args.url
+#输入你的邀请链接
+url = ''
+#你需要的邀请数量
+max_num = 50
 
 
 def getuser():
 
-    user = str(random.randint(1000000, 9999999))
+    user = ''.join(random.sample(string.ascii_letters + string.digits, 20))
 
     return user
 
@@ -39,23 +41,23 @@ def getdomain():
 
     return domain
 
-
-def po(user, domain, proxies, url):
-
+def po(user, domain, url):
     ss_po = requests.Session()
-    ss_po.get(url, proxies=proxies)
+    ss_po.get(url)
 
-    fullname = str(random.randint(1000000, 9999999))
-    password = str(random.randint(1000000, 9999999))
+    fullname = ''.join(random.sample(string.ascii_letters + string.digits, 14))
+    password = ''.join(random.sample(string.ascii_letters + string.digits, 8))
 
-    processon = {"email": user + domain, "pass": password, "fullname": fullname}
+    processon = {
+        'email': user + domain,
+        'pass': password,
+        'fullname': fullname
+    }
 
-    rsp_po = ss_po.post(
-        "https://www.processon.com/signup/submit", data=processon, proxies=proxies
-    )
+    rsp_po = ss_po.post('https://www.processon.com/signup/submit', data=processon)
 
     fmt = "\nemail: {}\npassword: {}\nnickname: {}\n"
-    print(fmt.format(processon.get("email"), password, fullname))
+    print(fmt.format(processon.get('email'), password, fullname))
 
 
 def mail(user, domain):
@@ -72,6 +74,7 @@ def mail(user, domain):
     url_box = re.findall(r"https://temp-mail.org/zh/view/\w+", rsp_refresh.text)
     while url_box == []:
         time.sleep(1)
+        print('wait...')
         rsp_refresh = ss_mail.get("https://temp-mail.org/zh/option/refresh/")
         url_box = re.findall(r"https://temp-mail.org/zh/view/\w+", rsp_refresh.text)
 
@@ -92,11 +95,8 @@ num = 0
 
 if __name__ == "__main__":
 
-    while True:
+    while num <= max_num:
         user = getuser()
         domain = getdomain()
-
-        proxies = proxy.get()
-
-        po(user, domain, proxies, url)
+        po(user, domain, url)
         mail(user, domain)
