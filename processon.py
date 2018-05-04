@@ -7,7 +7,7 @@ import argparse
 #打印日志
 import logging
 #设置日志等级
-logging.basicConfig(filename='example.log', filemode="w", level=logging.DEBUG)
+logging.basicConfig(filename='example.log', filemode="a", level=logging.DEBUG)
 
 #输入你的邀请链接
 url = ''

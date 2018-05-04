@@ -8,7 +8,7 @@ import proxy
 # this is a simple example
 import logging
 # define the log file, file mode and logging level
-logging.basicConfig(filename='example.log', filemode="w", level=logging.DEBUG)
+logging.basicConfig(filename='example.log', filemode="a", level=logging.DEBUG)
 max_num = 51;
 url = 'https://www.processon.com/i/593f9a35e4b04d4c799be64d';
 proxies = {'http': 'HTTP://101.81.141.175:9999', 'https': 'HTTP://101.81.141.175:9999',}

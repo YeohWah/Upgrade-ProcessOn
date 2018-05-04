@@ -7,7 +7,7 @@ import datetime
 #打印日志
 import logging
 #设置日志等级
-logging.basicConfig(filename='example.log', filemode="w", level=logging.INFO)
+logging.basicConfig(filename='example.log', filemode="a", level=logging.INFO)
 
 #输入你的邀请链接
 url = ''
@@ -17,13 +17,12 @@ num = 0
 #初始化参数序列
 init_num = 1
 
-
+year = str(datetime.datetime.now().year)
+month = str(datetime.datetime.now().month)
+day = str(datetime.datetime.now().day)
 def getuser(i):
     id = str(i)
-    year = str(datetime.datetime.now().year)
-    month = str(datetime.datetime.now().month)
-    day = str(datetime.datetime.now().day)
-    user = ''+year+month+day+id
+    user = ''+year+month+day+id+'-'.join(random.sample(string.ascii_letters + string.digits, 4))
 
     return user
 
@@ -38,7 +37,7 @@ def po(user, domain, url):
     ss_po.get(url)
 
     fullname = ''.join(random.sample(string.ascii_letters + string.digits, 14))
-    password = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+    password = '123456'
 
     processon = {
         'email': user + domain,
@@ -49,7 +48,7 @@ def po(user, domain, url):
 
     fmt = "\nemail: {}\npassword: {}\nnickname: {}\n"
     print(fmt.format(processon.get('email'), password, fullname))
-    logging.info(user)
+    logging.info(fmt.format(processon.get('email')+'\n password:'+password))
 if __name__ == "__main__":
 
     while num < max_num:
