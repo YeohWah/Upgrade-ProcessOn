@@ -23,18 +23,7 @@ def getuser():
 
 def getdomain():
 
-    domains = [
-        "@aditus.info",
-        "@storiqax.com",
-        "@air2token.com",
-        "@b2bx.net",
-        "@stelliteop.info",
-        "@bitwhites.top",
-        "@ethersportz.info",
-        "@2odem.com",
-        "@storiqax.top",
-        "@gifto12.com",
-    ]
+    domains = []
 
     domain = random.choice(domains)
 
