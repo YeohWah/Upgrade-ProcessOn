@@ -30,8 +30,6 @@ def getuser(i):
 
 
 def getdomain():
-    domain = '@yopmail.com'
-
     return domain
 
 def po(user, domain, url):
